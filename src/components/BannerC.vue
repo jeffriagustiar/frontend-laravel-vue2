@@ -14,14 +14,16 @@
                                     <li class="w-icon active">
                                         <a href="#"><i class="icon_bag_alt"></i></a>
                                     </li>
-                                    <li class="quick-view"><a href="product.html">+ Quick View</a></li>
+                                    <li class="quick-view"><router-link to="/product"><a href="#">+ Quick View</a></router-link></li>
                                 </ul>
                             </div>
                             <div class="pi-text">
                                 <div class="catagory-name">{{ itemp.type }}</div>
-                                <a href="#">
-                                    <h5>{{ itemp.name }}</h5>
-                                </a>
+                                <router-link to="/product">
+                                    <a href="#">
+                                        <h5>{{ itemp.name }}</h5>
+                                    </a>
+                                </router-link>
                                 <div class="product-price">
                                     Rp. {{ itemp.price }} 
                                     <span>Rp. {{ itemp.price }} </span>
