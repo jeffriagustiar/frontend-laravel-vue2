@@ -9,7 +9,7 @@
 
                         <div class="product-item" v-for="itemp in products" v-bind:key="itemp.id">
                             <div class="pi-pic">
-                                <img src="img/mickey1.jpg" height="450px" alt="" />
+                                <img v-bind:src="itemp.galleries[0] != null ? itemp.galleries[0].photo : 'img/mickey1.jpg'" height="450px" alt="" />
                                 <ul>
                                     <li class="w-icon active">
                                         <a href="#"><i class="icon_bag_alt"></i></a>
