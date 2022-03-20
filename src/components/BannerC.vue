@@ -14,7 +14,10 @@
                                     <li class="w-icon active">
                                         <a href="#"><i class="icon_bag_alt"></i></a>
                                     </li>
-                                    <li class="quick-view"><router-link to="/product"><a href="#">+ Quick View</a></router-link></li>
+                                    <li class="quick-view">
+                                        <router-link v-bind:to="'/product/'+itemp.id">
+                                            <a href="#">+ Quick View</a>
+                                        </router-link></li>
                                 </ul>
                             </div>
                             <div class="pi-text">
@@ -72,3 +75,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.pi-pic {
+  margin-right: 10px;
+}
+</style>
