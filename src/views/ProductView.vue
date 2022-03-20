@@ -47,11 +47,13 @@
                                     <h3>{{ productD.name }}</h3>
                                 </div>
                                 <div class="pd-desc">
-                                    {{ productD.description }}
+                                    <p v-html="productD.description"></p>
                                     <h4>Rp. {{ productD.price }}</h4>
                                 </div>
                                 <div class="quantity">
-                                    <router-link to="/cart"><a href="shopping-cart.html" class="primary-btn pd-cart">Add To Cart</a></router-link>
+                                    <!-- <router-link to="/cart"> -->
+                                        <a @click="saveCart(productD.id)" href="#" class="primary-btn pd-cart">Add To Cart</a>
+                                    <!-- </router-link> -->
                                 </div>
                             </div>
                         </div>
@@ -88,13 +90,8 @@ export default {
   data(){
     return{
       photo:'',
-      thumbs:[
-        "img/mickey1.jpg",
-        "img/mickey2.jpg",
-        "img/mickey3.jpg",
-        "img/mickey4.jpg"
-      ],
-      productD:[]
+      productD:[],
+      cartUser:[]
     }
   },
   methods:{
@@ -107,10 +104,23 @@ export default {
       this.productD = data;
     //   this.photo = data.galleries[0].photo;
       this.photo = data.galleries[0] != null ? data.galleries[0].photo : 'img/mickey1.jpg';
+    },
+
+    saveCart(idProduct){
+        this.cartUser.push(idProduct);
+        const parsed = JSON.stringify(this.cartUser);
+        localStorage.setItem('cartUser',parsed);
     }
   },
 
   mounted(){
+    if (localStorage.getItem('cartUser')){
+        try{
+            this.cartUser = JSON.parse(localStorage.getItem('cartUser'));
+        } catch(e){
+            localStorage.removeItem('cartUser');
+        }
+    }
     axios
       // .get("https://payakumbuh.sipd.kemendagri.go.id/siap/data/user")
     //   .get("http://shayna-backend.belajarkoding.com/api/products")
